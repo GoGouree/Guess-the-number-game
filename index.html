@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guess the Number Game</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;            
+            background-color: rgb(159, 177, 192);
+        }
+        #message {
+            font-size: 1.2rem;            
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <h1>Guess the Number</h1>
+    <h2>Hint : Consider the year in this century which is a palindrome number , divide it by 100 and you have the answer</h2>
+    <p id="message">A palindrome number is a number that remains the same when its digits are reversed</p>
+    <label for="guess">Enter your guess:</label>
+    <input type="number" id="guess" placeholder="Enter your guess">
+    <button onclick="checkGuess()">Check</button>
+
+    <script>
+        const secretNumber = 20;
+        let attempts = 0;
+        const Maxattempts = 3;
+
+        function checkGuess() {
+            const userGuess = parseInt(document.getElementById('guess').value);
+            
+            if (isNaN(userGuess) || userGuess < 1 || userGuess > 100) {
+                document.getElementById('message').textContent = 'Please enter a valid number between 1 and 100.';
+                return;
+            }
+            attempts++;
+
+            if (userGuess === secretNumber) {
+                document.getElementById('message').textContent = `Congratulations! You guessed it in ${attempts} attempts.`;
+            } else if (userGuess < secretNumber) {
+                document.getElementById('message').textContent = 'Try a higher number.';
+            } else {
+                document.getElementById('message').textContent = 'Try a lower number.';
+            }
+        }
+    </script>
+</body>
+
+<body>
+    <h2>Bonus Magic Math Puzzle</h2>
+    <h3>Puzzle: The Magical Number</h3>
+
+        <h4>Think of any positive integer (e.g., 7).
+        Multiply it by 2.
+        Add 8 to the result.
+        Divide the new number by 2.
+        Subtract the original number from this result.</h4>
+        <button id="showButton">Read my mind</button>
+        <p id="sentenceContainer"></p>
+    
+        <script>
+            const showButton = document.getElementById('showButton');
+            const sentenceContainer = document.getElementById('sentenceContainer');
+    
+            const mySentence = 'Magician Gouree says the Number you have in your mind is 4!';
+    
+            showButton.addEventListener('click', () => {
+                sentenceContainer.textContent = mySentence;
+            });
+        </script>
+    <h1>Now get back to work!</h1>
+</body>
+</html>
